@@ -10,11 +10,9 @@ const Button = (props) => {
             disabled={props.disabled}
         >
             {props.icon && (
-                <img
-                    src={props.icon}
-                    alt="icon"
-                    style={props.iconStyle}
-                />
+                <span style={props.iconStyle}>
+                    {props.icon}
+                </span>
             )}
             {props.value}
         </button>

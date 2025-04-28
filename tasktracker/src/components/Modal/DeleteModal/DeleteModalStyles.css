@@ -37,9 +37,9 @@
 }
 
 .cancelBtn {
-    background-color: #f44336;
-    color: white;
-    border: none;
+    background-color: transparent;
+    color: #b11f1f;
+    border: #b11f1f solid 2px;
     padding: 0.5rem 1rem;
     border-radius: 5px;
     cursor: pointer;

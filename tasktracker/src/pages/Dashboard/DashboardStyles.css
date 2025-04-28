@@ -40,17 +40,25 @@
 }
 
 .taskViewBtn {
-  background-color: #8b51f5;
-  color: white;
-  border: none;
+  background-color: transparent;
+  border: #8b51f5 2px solid;
+  color: #8b51f5;
   border-radius: 5px;
   cursor: pointer;
-  border: white;
   font-size: 1rem;
   height: 2rem;
   padding: 1rem;
   display: flex;
   align-items: center;
+}
+
+.taskViewBtn.selected {
+  background-color: #e6e0f8;
+}
+
+.filterBtnContainer {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .viewTasks {

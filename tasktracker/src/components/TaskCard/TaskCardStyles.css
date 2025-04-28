@@ -2,10 +2,9 @@
     background-color: #f9f9f9;
     border-radius: 8px;
     padding: 0.5rem;
-    margin: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 15rem;
-    height: auto;
+    height: 13rem;
     font-size: 0.7rem;
 }
 
@@ -19,11 +18,15 @@
 
 .taskBody {
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
 }
 
 .taskFooter {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .Icons {
@@ -48,4 +51,57 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.priority {
+    border-radius: 5px;
+    width: auto;
+    height: 1rem;
+    padding: 0.2rem;
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+}
+
+.statusOpen {
+    background-color: #1fb142;
+    color: white;
+    border-radius: 15px;
+    padding: 0.4rem;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.statusClosed {
+    background-color: #c0c0c0;
+    color: white;
+    border-radius: 15px;
+    padding: 0.4rem;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.statuspending {
+    background-color: #ffc107;
+    color: white;
+    border-radius: 15px;
+    padding: 0.4rem;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.taskAssignment {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.assign {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 1.5rem;
 }

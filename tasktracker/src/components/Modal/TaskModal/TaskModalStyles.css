@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1000;
 }
 
 .modalContent {
@@ -17,6 +18,19 @@
     border-radius: 10px;
     width: 40rem;
     height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.closeIcon {
+    cursor: pointer;
+    width: 1.5rem;
 }
 
 .modalForm {
@@ -31,7 +45,7 @@
 }
 
 .taskInput {
-    width: 80%;
+    width: 100%;
     margin-left: 1rem;
     padding: 0.5rem;
     border: 1px solid #ccc;
@@ -65,9 +79,27 @@ select.taskInput option:disabled {
 }
 
 .cancelTask {
-    background-color: #f44336;
+    background-color: transparent;
+    color: #b11f1f;
+    border: #b11f1f solid 2px;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.approveTask {
+    background-color: #1fb142;
     color: white;
     border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reopenTask {
+    background-color: transparent;
+    color: #b11f1f;
+    border: #b11f1f solid 2px;
     padding: 0.5rem 1rem;
     border-radius: 5px;
     cursor: pointer;

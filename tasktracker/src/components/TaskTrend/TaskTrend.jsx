@@ -9,13 +9,22 @@ const TaskTrend = () => {
     const earliestDate = new Date(Math.min(...allStartDates));
     const today = new Date();
 
+    earliestDate.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+
     const trendData = [];
-    for (let d = earliestDate; d <= today; d.setDate(d.getDate() + 1)) {
+    for (let d = new Date(earliestDate); d <= today; d.setDate(d.getDate() + 1)) {
+
         const currentDate = new Date(d);
+        currentDate.setHours(0, 0, 0, 0);
 
         const activeTasks = tasks.filter(task => {
             const taskStart = new Date(task.startDate);
             const taskClose = task.closedDate ? new Date(task.closedDate) : null;
+
+            taskStart.setHours(0, 0, 0, 0);
+            if (taskClose) taskClose.setHours(0, 0, 0, 0);
+
             return taskStart <= currentDate && (!taskClose || taskClose >= currentDate);
         });
 

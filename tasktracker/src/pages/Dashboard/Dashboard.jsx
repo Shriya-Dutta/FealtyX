@@ -3,12 +3,12 @@ import TaskCard from '../../components/TaskCard/TaskCard';
 import './DashboardStyles.css';
 import NavBar from '../../components/NavBar/NavBar';
 import Button from '../../components/Button/Button';
-import AddIcon from '../../utils/assets/AddIcon.png';
-import CreateEditModal from '../../components/Modal/CreateEditModal/CreateEditModal';
+import CreateEditModal from '../../components/Modal/TaskModal/TaskModal';
 import { useSelector } from 'react-redux';
 import TaskTrend from '../../components/TaskTrend/TaskTrend';
+import { FaPlus } from 'react-icons/fa';
 
-const DeveloperDashboard = () => {
+const Dashboard = () => {
 
   const { tasks } = useSelector((state) => state.tasks);
   const role = useSelector((state) => state.auth.user?.role);
@@ -17,8 +17,11 @@ const DeveloperDashboard = () => {
   const [filterStatus, setFilterStatus] = useState('All');
   const [sortBy, setSortBy] = useState('None');
   const [filteredTasks, setFilteredTasks] = useState(tasks);
+  const [selectedStatus, setSelectedStatus] = useState('All');
 
-  console.log("Tasks: ", tasks);
+  const statuses = ['All', 'Open', 'Closed', 'Pending Approval'];
+
+  // console.log("Tasks: ", tasks);
 
   const handleAddTask = () => {
     setIsModalOpen(true);
@@ -41,7 +44,7 @@ const DeveloperDashboard = () => {
     } else if (sortBy === 'StartDate') {
       tempTasks.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
     }
-    else if (sortBy === 'ClosedDate') { 
+    else if (sortBy === 'ClosedDate') {
       tempTasks.sort((a, b) => new Date(b.closedDate) - new Date(a.closedDate));
     }
 
@@ -73,7 +76,7 @@ const DeveloperDashboard = () => {
                   id="add-task"
                   className='addTask'
                   value="Add Task"
-                  icon={AddIcon}
+                  icon={<FaPlus />}
                   iconStyle={{ color: "#1fb142", width: "16px", height: "16px", marginRight: "8px" }}
                   onClick={handleAddTask}
                 />
@@ -87,35 +90,24 @@ const DeveloperDashboard = () => {
             <div id='view-tasks' className='viewTasks'>
 
               <div id='filter-tasks' className='filterTasks'>
-              <label id='filter-label' className="sortLabel">Filter By:</label>
 
-                <Button
-                  id="all-tasks"
-                  className='taskViewBtn'
-                  value="All"
-                  onClick={() => handleFilterClick('All')}
-                />
+                <label id='filter-label' className="sortLabel">Filter By:</label>
 
-                <Button
-                  id="open-tasks"
-                  className='taskViewBtn'
-                  value="Open"
-                  onClick={() => handleFilterClick('Open')}
-                />
+                <div id='filterBtn-container' className="filterBtnContainer">
+                  {statuses.map((status) => (
+                    <Button
+                      key={status}
+                      id={`${status.toLowerCase().replace(/\s/g, '-')}-tasks`}
+                      className={`taskViewBtn ${selectedStatus === status ? 'selected' : ''}`}
+                      value={status}
+                      onClick={() => {
+                        setSelectedStatus(status);
+                        handleFilterClick(status);
+                      }}
+                    />
+                  ))}
+                </div>
 
-                <Button
-                  id="closed-tasks"
-                  className='taskViewBtn'
-                  value="Closed"
-                  onClick={() => handleFilterClick('Closed')}
-                />
-
-                <Button
-                  id="pendingAppr-tasks"
-                  className='taskViewBtn'
-                  value="Pending Approval"
-                  onClick={() => handleFilterClick('Pending Approval')}
-                />
               </div>
 
               <div id='sort-tasks' className='sortTasks'>
@@ -156,4 +148,4 @@ const DeveloperDashboard = () => {
   );
 };
 
-export default DeveloperDashboard;
+export default Dashboard;
