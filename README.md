@@ -1,6 +1,9 @@
 # FealtyX Frontend Assignent - Task Tracker
 
 
+<b>App URL: https://fealtyxtasktracker.netlify.app/</b>
+
+
 ## Steps to run project on Local:
 <p>Step 1) Clone the repository from the "main" branch to your local.</p>
 <p>Step 2) Go inside tasktracker folder.</p>
