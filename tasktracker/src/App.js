@@ -1,31 +1,33 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Login from './components/Login/Login';
-import Dashboard from './components/Dashboard/Dashboard';
-import { useSelector } from 'react-redux';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login/Login';
+import ProtectedRoute from './components/ProtectedRoutes/ProtectedRoutes';
+import Dashboard from './pages/Dashboard/Dashboard';;
 
 function App() {
-
-  const { isAuthenticated } = useSelector((state) => state.auth);
-
-  console.log(isAuthenticated);
 
   return (
     <Router>
       <Routes>
 
+        <Route path="/" element={<Login />} />
+
         <Route
-          path="/"
-          element={isAuthenticated ? <Navigate to="/dashboard" /> : <Navigate to="/login" />}
+          path="/developer-dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
         />
 
-        <Route 
-          path="/login" 
-          element={<Login />} />
-
         <Route
-          path="/dashboard"
-          element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
+          path="/manager-dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
         />
 
       </Routes>
